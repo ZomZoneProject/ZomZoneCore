@@ -118,10 +118,6 @@
             <url>https://mvn.lumine.io/repository/maven-public/</url>
         </repository>
         <repository>
-            <id>multiverse-repo</id>
-            <url>http://repo.onarandombox.com/content/repositories/multiverse/</url>
-        </repository>
-        <repository>
             <id>spigotmc-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
@@ -158,12 +154,6 @@
             <groupId>com.github.ucchyocean</groupId>
             <artifactId>LunaChat</artifactId>
             <version>3.0.16</version>
-        </dependency>
-        <dependency>
-            <groupId>com.onarandombox.multiversecore</groupId>
-            <artifactId>Multiverse-Core</artifactId>
-            <version>4.3.1</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.lumine.xikage</groupId>
