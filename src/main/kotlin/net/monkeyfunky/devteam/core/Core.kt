@@ -23,6 +23,7 @@ class Core : JavaPlugin() {
         Bukkit.getServer().pluginManager.registerEvents(EventListener(), this)
 
         Bukkit.getServer().pluginManager.registerEvents(LogInOutListener(), this)
+        // Bukkit.getServer().pluginManager.registerEvents(MotdChangeListener(), this)
 
         getCommand("reloadcore")?.setExecutor(ReloadConfigCommand())
 
