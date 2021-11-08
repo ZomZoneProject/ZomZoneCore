@@ -1,5 +1,6 @@
 package net.monkeyfunky.devteam.core
 
+import net.monkeyfunky.devteam.core.commands.ReloadConfigCommand
 import net.monkeyfunky.devteam.core.events.LogInOutListener
 import net.monkeyfunky.devteam.core.events.MotdChangeListener
 import org.bukkit.Bukkit
@@ -23,7 +24,18 @@ class Core : JavaPlugin() {
 
         Bukkit.getServer().pluginManager.registerEvents(LogInOutListener(), this)
 
+        getCommand("reloadcore")?.setExecutor(ReloadConfigCommand())
+
         saveDefaultConfig()
+        loadConfig()
+    }
+
+    override fun reloadConfig() {
+        super.reloadConfig()
+        loadConfig()
+    }
+
+    private fun loadConfig() {
         val configFilePath = dataFolder.toString() + File.separator + "config.yml"
         try {
             InputStreamReader(FileInputStream(configFilePath), StandardCharsets.UTF_8).use { reader ->
