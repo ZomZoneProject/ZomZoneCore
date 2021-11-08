@@ -191,7 +191,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/zomzoneproject/mvn_repo</url>
+            <url>https://maven.pkg.github.com/zomzoneproject/repo</url>
         </repository>
     </distributionManagement>
 </project>
