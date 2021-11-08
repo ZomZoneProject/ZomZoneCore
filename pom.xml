@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.monkeyfunky.devteam</groupId>
-    <artifactId>ZomZoneCore</artifactId>
+    <artifactId>zomzonecore</artifactId>
     <version>1.0.4</version>
     <packaging>jar</packaging>
 
