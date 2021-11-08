@@ -1,5 +1,6 @@
 package net.monkeyfunky.devteam.core
 
+import net.monkeyfunky.devteam.core.events.LogInOutListener
 import org.bukkit.Bukkit
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
@@ -19,13 +20,18 @@ class Core : JavaPlugin() {
         PLUGIN = this
         Bukkit.getServer().pluginManager.registerEvents(EventListener(), this)
 
-        saveDefaultConfig()
-        val confFilePath = dataFolder.toString() + File.separator + "config.yml"
-        try {
-            InputStreamReader(FileInputStream(confFilePath), StandardCharsets.UTF_8).use { reader ->
-                val conf: FileConfiguration = YamlConfiguration()
-                conf.load(reader)
+        Bukkit.getServer().pluginManager.registerEvents(LogInOutListener(), this)
 
+        saveDefaultConfig()
+        val configFilePath = dataFolder.toString() + File.separator + "config.yml"
+        try {
+            InputStreamReader(FileInputStream(configFilePath), StandardCharsets.UTF_8).use { reader ->
+                val config: FileConfiguration = YamlConfiguration()
+                config.load(reader)
+
+                LogInOutListener.FIRST_JOIN_MESSAGE = config.getString("message.join.first").toString()
+                LogInOutListener.NORMAL_JOIN_MESSAGE = config.getString("message.join.normal").toString()
+                LogInOutListener.QUIT_MESSAGE = config.getString("message.left").toString()
             }
         } catch (e: Exception) {
             println(e.message)
