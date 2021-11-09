@@ -134,7 +134,7 @@
     <dependencies>
         <dependency>
             <groupId>net.citizensnpcs</groupId>
-            <artifactId>citizens-main</artifactId>
+            <artifactId>citizensapi</artifactId>
             <version>2.0.28-SNAPSHOT</version>
             <type>jar</type>
             <scope>provided</scope>
@@ -163,8 +163,8 @@
         </dependency>
         <dependency>
             <groupId>com.comphenix.protocol</groupId>
-            <artifactId>ProtocolLib</artifactId>
-            <version>4.6.0</version>
+            <artifactId>ProtocolLib-API</artifactId>
+            <version>4.4.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -182,7 +182,7 @@
         <dependency>
             <groupId>com.sk89q.worldedit</groupId>
             <artifactId>worldedit-bukkit</artifactId>
-            <version>7.2.7-SNAPSHOT</version>
+            <version>7.3.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
