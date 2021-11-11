@@ -51,7 +51,7 @@ object NBTUtils {
                 Bukkit.getServer().javaClass.getPackage().name.replace(".", ",").split(",".toRegex()).toTypedArray()[3]
             } catch (e: ArrayIndexOutOfBoundsException) {
                 e.printStackTrace()
-                return "unknown"
+                return "v1.16_R3"
             }
             return version
         }
