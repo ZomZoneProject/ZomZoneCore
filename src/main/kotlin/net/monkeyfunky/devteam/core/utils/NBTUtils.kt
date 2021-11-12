@@ -45,14 +45,5 @@ object NBTUtils {
         return null
     }
 
-    private val serverVersion: String
-        get() {
-            val version: String = try {
-                Bukkit.getServer().javaClass.getPackage().name.replace(".", ",").split(",".toRegex()).toTypedArray()[3]
-            } catch (e: ArrayIndexOutOfBoundsException) {
-                e.printStackTrace()
-                return "v1.16_R3"
-            }
-            return version
-        }
+    private val serverVersion: String get() { return NMSUtils.serverVersion }
 }
