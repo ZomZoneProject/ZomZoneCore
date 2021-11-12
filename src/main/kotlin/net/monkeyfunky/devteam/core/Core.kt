@@ -2,6 +2,7 @@ package net.monkeyfunky.devteam.core
 
 import net.monkeyfunky.devteam.core.commands.ReloadConfigCommand
 import net.monkeyfunky.devteam.core.events.LogInOutListener
+import net.monkeyfunky.devteam.core.events.PacketListener
 import org.bukkit.Bukkit
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
@@ -22,6 +23,7 @@ class Core : JavaPlugin() {
         Bukkit.getServer().pluginManager.registerEvents(EventListener(), this)
 
         Bukkit.getServer().pluginManager.registerEvents(LogInOutListener(), this)
+        Bukkit.getServer().pluginManager.registerEvents(PacketListener(), this)
 
         getCommand("reloadcore")?.setExecutor(ReloadConfigCommand())
 
