@@ -1,6 +1,8 @@
 package net.monkeyfunky.devteam.core.events
 
 import io.netty.channel.*
+import net.monkeyfunky.devteam.core.Core
+import net.monkeyfunky.devteam.core.packets.PacketHandler
 import net.monkeyfunky.devteam.core.utils.NMSUtils
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -14,13 +16,20 @@ class PacketListener : Listener {
     fun onPlayerJoin(event: PlayerJoinEvent) {
         val player = event.player
         val channelDuplexHandler: ChannelDuplexHandler = object : ChannelDuplexHandler() {
-            @Throws(Exception::class)
-            override fun channelRead(ctx: ChannelHandlerContext?, packet: Any) {
+            override fun channelRead(ctx: ChannelHandlerContext?, msg: Any) {
+                var packet: Any? = msg
+                for (handler: PacketHandler in Core.PLUGIN.getPacketAPI().getHandlers()) {
+                    packet = handler.read(player, packet)
+                }
                 super.channelRead(ctx, packet)
             }
 
             override fun write(ctx: ChannelHandlerContext?, msg: Any?, promise: ChannelPromise?) {
-                super.write(ctx, msg, promise)
+                var packet: Any? = msg
+                for (handler: PacketHandler in Core.PLUGIN.getPacketAPI().getHandlers()) {
+                    packet = handler.write(player, packet)
+                }
+                super.write(ctx, packet, promise)
             }
         }
         try {

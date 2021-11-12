@@ -3,6 +3,7 @@ package net.monkeyfunky.devteam.core
 import net.monkeyfunky.devteam.core.commands.ReloadConfigCommand
 import net.monkeyfunky.devteam.core.events.LogInOutListener
 import net.monkeyfunky.devteam.core.events.PacketListener
+import net.monkeyfunky.devteam.core.packets.PacketAPI
 import org.bukkit.Bukkit
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
@@ -18,6 +19,8 @@ class Core : JavaPlugin() {
         lateinit var PLUGIN : Core private set
     }
 
+    private lateinit var packetAPI: PacketAPI
+
     override fun onEnable() {
         PLUGIN = this
         Bukkit.getServer().pluginManager.registerEvents(EventListener(), this)
@@ -26,6 +29,8 @@ class Core : JavaPlugin() {
         Bukkit.getServer().pluginManager.registerEvents(PacketListener(), this)
 
         getCommand("reloadcore")?.setExecutor(ReloadConfigCommand())
+
+        packetAPI = PacketAPI()
 
         saveDefaultConfig()
         loadConfig()
@@ -51,5 +56,9 @@ class Core : JavaPlugin() {
             println(e.message)
             onDisable()
         }
+    }
+
+    fun getPacketAPI(): PacketAPI {
+        return packetAPI
     }
 }
