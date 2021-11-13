@@ -6,7 +6,7 @@
 
     <groupId>net.monkeyfunky.devteam</groupId>
     <artifactId>zomzonecore</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <packaging>jar</packaging>
 
     <name>ZomZoneCore</name>
@@ -131,6 +131,17 @@
             <id>ucchy-github</id>
             <url>https://raw.github.com/ucchyocean/mvn-repo/master</url>
         </repository>
+        <repository>
+            <id>ZomZone-repo</id>
+            <name>ZomZone Project Maven Packages</name>
+            <url>https://maven.pkg.github.com/zomzoneproject/repo</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -180,6 +191,24 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
             <version>1.16.5-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.monkeyfunky.devteam</groupId>
+            <artifactId>zomzonestatus</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.monkeyfunky.devteam</groupId>
+            <artifactId>signinput</artifactId>
+            <version>1.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.monkeyfunky.devteam</groupId>
+            <artifactId>zomzoneeconomy</artifactId>
+            <version>0.2.3</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
