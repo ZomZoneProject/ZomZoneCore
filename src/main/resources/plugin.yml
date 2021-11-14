@@ -14,3 +14,5 @@ depend:
 commands:
   reloadcore:
     permission: op
+  debugcore:
+    permission: op
