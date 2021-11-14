@@ -46,10 +46,12 @@ class TabProfile(id: UUID?, number: Int, text: String?, ping: Int, head: Propert
     }
 
     fun setHead(property: Property): Boolean {
-        val p: Property = properties["textures"].stream().findFirst().orElse(null as Property?) as Property
-        return if (p === property) {
+        val p = properties["textures"].stream().findFirst().orElse(null)
+        return if (p != null) {
             false
         } else {
+            if (p === property) return false
+
             properties.removeAll("textures")
             properties.put("textures", property)
             true

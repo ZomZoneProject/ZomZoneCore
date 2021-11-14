@@ -8,8 +8,8 @@ class TabListEntry(display: String = "") {
     }
 
     var text: String = ""
-    private var ping = 1
-    private var head: Property? = null
+    var ping = 1
+    var head: Property? = null
 
     init {
         head = DEFAULT

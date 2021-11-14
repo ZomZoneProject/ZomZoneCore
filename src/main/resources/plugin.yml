@@ -7,6 +7,10 @@ authors: [ eight_y_88 ]
 description: ZomZone Core Plugin
 website: https://monkeyfunky.net
 
+depend:
+  - "ZomZoneEconomy"
+  - "ZomZoneStatus"
+
 commands:
   reloadcore:
     permission: op

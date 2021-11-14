@@ -20,6 +20,7 @@ class PacketFactory {
         if (infoListField == null) {
             val clazz = Class.forName("net.minecraft.server." + NMSUtils.serverVersion + ".PacketPlayOutPlayerInfo")
             infoListField = clazz.getDeclaredField("b")
+            infoListField!!.isAccessible = true
             entityPlayerClass = Class.forName("net.minecraft.server." + NMSUtils.serverVersion + ".EntityPlayer")
             val classes = clazz.classes
             var n = 0
@@ -60,6 +61,7 @@ class PacketFactory {
                         "fromStringOrNull",
                         String::class.java
                     )
+            fromStringOrNull!!.isAccessible = true
         }
     }
 
@@ -76,22 +78,24 @@ class PacketFactory {
     }
 
     @Throws(Exception::class)
-    fun getPacket(action: String?, vararg profiles: TabProfile): Any? {
+    fun getPacket(action: String?, vararg profiles: TabProfile?): Any? {
         val actionEnum = getEnumPlayerInfoAction(action)
         val packet: Any? = packetPlayOutPlayerInfoConstructor?.newInstance(actionEnum, Array.newInstance(entityPlayerClass, 0))
         val size = profiles.size
         val infoList: MutableList<Any?> = (infoListField?.get(packet) as List<Any?>).toMutableList()
         for (n in 0 until size) {
-            val profile: TabProfile = profiles[n]
-            infoList.add(
-                playerInfoDataConstructor?.newInstance(
-                    packet,
-                    profile,
-                    profile.getPing(),
-                    gameModeNotSet,
-                    fromStringOrNull?.invoke(null as Any?, profile.getText())
+            val profile: TabProfile? = profiles[n]
+            if (profile != null) {
+                infoList.add(
+                    playerInfoDataConstructor?.newInstance(
+                        packet,
+                        profile,
+                        profile.getPing(),
+                        gameModeNotSet,
+                        fromStringOrNull?.invoke(null as Any?, profile.getText())
+                    )
                 )
-            )
+            }
         }
         return packet
     }
