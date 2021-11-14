@@ -4,6 +4,7 @@ import net.monkeyfunky.devteam.core.commands.ReloadConfigCommand
 import net.monkeyfunky.devteam.core.events.LogInOutListener
 import net.monkeyfunky.devteam.core.events.PacketListener
 import net.monkeyfunky.devteam.core.packets.PacketAPI
+import net.monkeyfunky.devteam.core.tablist.TabList
 import org.bukkit.Bukkit
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
@@ -20,6 +21,7 @@ class Core : JavaPlugin() {
     }
 
     private lateinit var packetAPI: PacketAPI
+    private lateinit var tabList: TabList
 
     override fun onEnable() {
         PLUGIN = this
@@ -32,8 +34,14 @@ class Core : JavaPlugin() {
 
         packetAPI = PacketAPI()
 
+        tabList = TabList()
+
         saveDefaultConfig()
         loadConfig()
+    }
+
+    override fun onDisable() {
+        tabList.disable()
     }
 
     override fun reloadConfig() {
