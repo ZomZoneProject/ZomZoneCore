@@ -16,7 +16,7 @@ class PlayerTabList(player: Player?) {
         this.player = player
     }
 
-    fun updateProfile(index: Int, @Nonnull entry: TabListEntry) {
+    private fun updateProfile(index: Int, @Nonnull entry: TabListEntry) {
         Validate.isTrue(index <= 79, "Bar index cannot be higher than 79!")
         Validate.isTrue(index >= 0, "Bar index cannot be smaller than 0!")
         TabList.getExecutor().submit {
@@ -44,6 +44,21 @@ class PlayerTabList(player: Player?) {
         }
     }
 
+    fun updateTabList(@Nullable header: String?, @Nullable footer: String?, @Nonnull entries: Array<TabListEntry>) {
+        TabList.getExecutor().submit {
+            try {
+                Validate.isTrue(entries.size == 80, "entries table must have 80 objects!")
+                for (i in 0..79) {
+                    val entry: TabListEntry = entries[i]
+                    updateProfile(i, entry)
+                }
+                sendHeaderFooter(header, footer)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
     fun sendTabList(@Nullable header: String?, @Nullable footer: String?, @Nonnull entries: Array<TabListEntry>) {
         TabList.getExecutor().submit {
             try {
@@ -65,16 +80,8 @@ class PlayerTabList(player: Player?) {
         }
     }
 
-    fun sendHeaderFooter(@Nullable header: String?, @Nullable footer: String?) {
+    private fun sendHeaderFooter(@Nullable header: String?, @Nullable footer: String?) {
         TabList.getExecutor().submit { player!!.setPlayerListHeaderFooter(header, footer) }
-    }
-
-    fun updateHeader(@Nullable header: String?) {
-        TabList.getExecutor().submit { player!!.playerListHeader = header }
-    }
-
-    fun updateFooter(@Nullable footer: String?) {
-        TabList.getExecutor().submit { player!!.playerListFooter = footer }
     }
 
     @Nonnull

@@ -1,5 +1,6 @@
 package net.monkeyfunky.devteam.core.tablist.packets
 
+import com.mojang.authlib.GameProfile
 import net.monkeyfunky.devteam.core.tablist.data.TabProfile
 import net.monkeyfunky.devteam.core.utils.NMSUtils
 import java.lang.reflect.Array
@@ -89,14 +90,16 @@ class PacketFactory {
                 infoList.add(
                     playerInfoDataConstructor?.newInstance(
                         packet,
-                        profile,
+                        profile as GameProfile,
                         profile.getPing(),
                         gameModeNotSet,
-                        fromStringOrNull?.invoke(null as Any?, profile.getText())
+                        fromStringOrNull?.invoke(null, profile.getText())
                     )
                 )
             }
         }
+        infoListField?.isAccessible = true
+        infoListField?.set(packet, infoList.toList())
         return packet
     }
 }

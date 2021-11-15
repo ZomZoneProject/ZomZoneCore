@@ -4,7 +4,6 @@ import com.mojang.authlib.GameProfile
 import com.mojang.authlib.properties.Property
 import java.util.*
 
-
 class TabProfile(id: UUID?, number: Int, text: String?, ping: Int, head: Property) : GameProfile(id, text) {
     private var text: String? = null
     private var ping = 0
@@ -46,15 +45,14 @@ class TabProfile(id: UUID?, number: Int, text: String?, ping: Int, head: Propert
     }
 
     fun setHead(property: Property): Boolean {
-        val p = properties["textures"].stream().findFirst().orElse(null)
-        return if (p != null) {
-            false
-        } else {
-            if (p === property) return false
-
-            properties.removeAll("textures")
-            properties.put("textures", property)
-            true
+        if (properties["textures"].iterator().hasNext()) {
+            val p = properties["textures"].iterator().next()
+            if (p === property) {
+                return false
+            }
         }
+        properties.removeAll("textures")
+        properties.put("textures", property)
+        return true
     }
 }
