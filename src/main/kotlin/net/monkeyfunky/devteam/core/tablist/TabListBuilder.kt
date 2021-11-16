@@ -32,7 +32,7 @@ class TabListBuilder {
         val iterator = Bukkit.getOnlinePlayers().iterator()
         while (profiles.size < 80) {
             if (profiles.size == 0 || profiles.size == 20 || profiles.size == 40) {
-                profiles.add(TabListEntry("${ ChatColor.YELLOW }    参加者 (${ Bukkit.getOnlinePlayers().size })    "))
+                profiles.add(TabListEntry("${ ChatColor.LIGHT_PURPLE }    参加者 (${ Bukkit.getOnlinePlayers().size })    ").setHead(HeadColor.LIGHT_PURPLE))
                 continue
             }
             if (iterator.hasNext() && profiles.size < 60) {
@@ -41,17 +41,17 @@ class TabListBuilder {
             }
 
             if(profiles.size == 60) {
-                profiles.add(TabListEntry("${ ChatColor.AQUA }    ステータス    "))
+                profiles.add(TabListEntry("${ ChatColor.AQUA }    ステータス    ").setHead(HeadColor.AQUA))
                 profiles.add(TabListEntry())
-                profiles.add(TabListEntry("Status Point: ${ status.getStatus(StatusTypes.POINT) }"))
+                profiles.add(TabListEntry("${ ChatColor.GREEN }Status Point: ${ status.getStatus(StatusTypes.POINT) }pt").setHead(HeadColor.GREEN))
                 profiles.add(TabListEntry())
-                profiles.add(TabListEntry("弓術: ${ status.getStatus(StatusTypes.BOW) }"))
-                profiles.add(TabListEntry("剣術: ${ status.getStatus(StatusTypes.SWORD) }"))
-                profiles.add(TabListEntry("防御: ${ status.getStatus(StatusTypes.SHIELD) }"))
-                profiles.add(TabListEntry("体力: ${ status.getStatus(StatusTypes.HEALTH) }"))
-                profiles.add(TabListEntry("銃葬: ${ status.getStatus(StatusTypes.GUN) }"))
+                profiles.add(TabListEntry("${ ChatColor.DARK_PURPLE }弓術: ${ status.getStatus(StatusTypes.BOW) }pt (+${ status.getStatus(StatusTypes.BOW).toDouble() / 10 })").setHead(HeadColor.DARK_PURPLE))
+                profiles.add(TabListEntry("${ ChatColor.RED }剣術: ${ status.getStatus(StatusTypes.SWORD) }pt (+${ status.getStatus(StatusTypes.SWORD).toDouble() / 10 })").setHead(HeadColor.RED))
+                profiles.add(TabListEntry("${ ChatColor.BLUE }防御: ${ status.getStatus(StatusTypes.SHIELD) }pt (+${ status.getStatus(StatusTypes.SHIELD).toDouble() / 5 }%)").setHead(HeadColor.BLUE))
+                profiles.add(TabListEntry("${ ChatColor.DARK_AQUA }体力: ${ status.getStatus(StatusTypes.HEALTH) }pt (+${ status.getStatus(StatusTypes.HEALTH).toDouble() / 10 })").setHead(HeadColor.DARK_AQUA))
+                profiles.add(TabListEntry("${ ChatColor.YELLOW }銃葬: ${ status.getStatus(StatusTypes.GUN) }pt (+${ status.getStatus(StatusTypes.GUN).toDouble() / 5 })").setHead(HeadColor.YELLOW))
                 profiles.add(TabListEntry())
-                profiles.add(TabListEntry("所持金: ${ Economy.getInstance().api.get(player.uniqueId) }"))
+                profiles.add(TabListEntry("${ ChatColor.GOLD }所持金: ${ Economy.getInstance().api.get(player.uniqueId) } Gully").setHead(HeadColor.GOLD))
             }
             profiles.add(TabListEntry())
         }
@@ -60,7 +60,7 @@ class TabListBuilder {
     }
 
     private fun getPlayerProperties(player: Player): TabListEntry {
-        val profile = TabListEntry(player.displayName)
+        val profile = TabListEntry(player.playerListName)
         return profile.setHead(getTextures(player))
     }
 
