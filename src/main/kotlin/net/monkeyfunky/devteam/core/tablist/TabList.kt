@@ -33,7 +33,7 @@ class TabList {
         val runnable = object : BukkitRunnable() {
             override fun run() {
                 for (player: Player in Bukkit.getOnlinePlayers()) {
-                    getManager().getTabList(player)?.updateTabList(getManager().builder.header, getManager().builder.footer, getManager().builder.getProfiles(player))
+                    getManager().getTabList(player)?.updateTabList(getManager().builder.getHeader(player), getManager().builder.getFooter(player), getManager().builder.getProfiles(player))
                 }
             }
         } as Runnable

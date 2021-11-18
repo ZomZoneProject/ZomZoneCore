@@ -18,6 +18,14 @@ class TabListBuilder {
     var footer = ""
     private val hash: HashMap<UUID, Status> = hashMapOf()
 
+    fun getHeader(player: Player): String {
+        return "Welcome to ZomZone! ${ player.name }!"
+    }
+
+    fun getFooter(player: Player): String {
+        return ""
+    }
+
     fun getProfiles(player: Player): Array<TabListEntry> {
         val profiles: MutableList<TabListEntry> = mutableListOf()
 

@@ -28,7 +28,7 @@ class TabListManager {
     fun createTabList(player: Player?) {
         val tabList = PlayerTabList(player)
         tabLists.add(tabList)
-        player?.let { builder.getProfiles(it) }?.let { tabList.sendTabList(builder.header, builder.footer, it) }
+        player?.let { builder.getProfiles(it) }?.let { tabList.sendTabList(builder.getHeader(player), builder.getFooter(player), it) }
     }
 
     fun removeTabList(player: Player?) {
@@ -46,5 +46,9 @@ class TabListManager {
             tablist = o as PlayerTabList
         } while (!tablist.getPlayer()?.equals(player)!!)
         return tablist
+    }
+
+    fun setBuilder(builder: TabListBuilder) {
+        this.builder = builder
     }
 }
