@@ -51,6 +51,7 @@ class Core : JavaPlugin() {
     }
 
     override fun onDisable() {
+        PacketAPI.remove("DEBUG")
         tabList.disable()
     }
 

@@ -14,8 +14,6 @@ import java.util.*
 import kotlin.collections.HashMap
 
 class TabListBuilder {
-    var header = "WELCOME TO ZOMZONE!!!!!!!!!"
-    var footer = ""
     private val hash: HashMap<UUID, Status> = hashMapOf()
 
     fun getHeader(player: Player): String {

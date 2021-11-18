@@ -67,7 +67,7 @@ class PlayerTabList(player: Player?) {
                     val entry: TabListEntry = entries[i]
                     val profile =
                         entry.head?.let {
-                            TabProfile(TabList.getManager().profiles[i], i, entry.text, entry.ping, it)
+                            TabProfile(TabList.getManager().profiles[i], entry.text, entry.ping, it)
                         }
                     profiles[i] = profile
                 }

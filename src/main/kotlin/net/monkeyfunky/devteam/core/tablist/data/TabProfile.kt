@@ -4,7 +4,7 @@ import com.mojang.authlib.GameProfile
 import com.mojang.authlib.properties.Property
 import java.util.*
 
-class TabProfile(id: UUID?, number: Int, text: String?, ping: Int, head: Property) : GameProfile(id, text) {
+class TabProfile(id: UUID?, text: String?, ping: Int, head: Property) : GameProfile(id, text) {
     private var text: String? = null
     private var ping = 0
 
