@@ -5,7 +5,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerCommandPreprocessEvent
 
 class EventListener : Listener {
-    private val block = listOf(
+    private val blocked = listOf(
         "/pl",
         "/plugins",
         "/help",
@@ -14,7 +14,7 @@ class EventListener : Listener {
 
     @EventHandler
     fun onCommand(e: PlayerCommandPreprocessEvent) {
-        if (block.any { e.message.contains(it) }) {
+        if (blocked.any { e.message.contains(it) } && !e.player.isOp) {
             e.isCancelled = true
         }
     }

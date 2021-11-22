@@ -11,6 +11,7 @@ import net.monkeyfunky.devteam.core.tablist.TabList
 import org.bukkit.Bukkit
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
+import org.bukkit.event.Listener
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 import java.io.FileInputStream
@@ -31,11 +32,14 @@ class Core : JavaPlugin() {
     override fun onEnable() {
         PLUGIN = this
         DEBUG = false
-        Bukkit.getServer().pluginManager.registerEvents(EventListener(), this)
 
-        Bukkit.getServer().pluginManager.registerEvents(LogInOutListener(), this)
-        Bukkit.getServer().pluginManager.registerEvents(PacketListener(), this)
-        Bukkit.getServer().pluginManager.registerEvents(TabListListener(), this)
+        registerEvents(
+            EventListener(),
+
+            PacketListener(),
+            TabListListener(),
+            LogInOutListener()
+        )
 
         getCommand("reloadcore")?.setExecutor(ReloadConfigCommand())
         getCommand("debugcore")?.setExecutor(DebugCommand())
@@ -83,5 +87,9 @@ class Core : JavaPlugin() {
 
     fun getTabList(): TabList {
         return tabList
+    }
+
+    private fun registerEvents(vararg listeners: Listener) {
+        listeners.forEach { Bukkit.getPluginManager().registerEvents(it, this) }
     }
 }
