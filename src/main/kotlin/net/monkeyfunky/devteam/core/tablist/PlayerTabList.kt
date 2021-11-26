@@ -44,6 +44,9 @@ class PlayerTabList(player: Player?) {
         }
     }
 
+    /**
+     * Update TabList
+     */
     fun updateTabList(@Nullable header: String?, @Nullable footer: String?, @Nonnull entries: Array<TabListEntry>) {
         TabList.getExecutor().submit {
             try {
@@ -59,6 +62,9 @@ class PlayerTabList(player: Player?) {
         }
     }
 
+    /**
+     * Send TabList to Player
+     */
     fun sendTabList(@Nullable header: String?, @Nullable footer: String?, @Nonnull entries: Array<TabListEntry>) {
         TabList.getExecutor().submit {
             try {

@@ -42,10 +42,16 @@ class TabList {
     }
 
     companion object {
+        /**
+         * Get TabList Executor
+         */
         fun getExecutor(): ExecutorService {
             return Core.PLUGIN.getTabList().executorService
         }
 
+        /**
+         * Get TabList Manager
+         */
         fun getManager(): TabListManager {
             return Core.PLUGIN.getTabList().tabListManager
         }

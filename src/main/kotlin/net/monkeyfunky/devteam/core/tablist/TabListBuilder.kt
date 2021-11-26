@@ -16,14 +16,23 @@ import kotlin.collections.HashMap
 class TabListBuilder {
     private val hash: HashMap<UUID, Status> = hashMapOf()
 
+    /**
+     * Get current header message of TabList
+     */
     fun getHeader(player: Player): String {
         return "Welcome to ZomZone! ${ player.name }!"
     }
 
+    /**
+     * Get current footer message of TabList
+     */
     fun getFooter(player: Player): String {
         return ""
     }
 
+    /**
+     * Get current profiles of tabList
+     */
     fun getProfiles(player: Player): Array<TabListEntry> {
         val profiles: MutableList<TabListEntry> = mutableListOf()
 

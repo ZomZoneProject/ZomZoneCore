@@ -25,27 +25,36 @@ class TabListManager {
         }
     }
 
+    /**
+     * Create TabList
+     */
     fun createTabList(player: Player?) {
         val tabList = PlayerTabList(player)
         tabLists.add(tabList)
         player?.let { builder.getProfiles(it) }?.let { tabList.sendTabList(builder.getHeader(player), builder.getFooter(player), it) }
     }
 
+    /**
+     * Remove TabList
+     */
     fun removeTabList(player: Player?) {
         getTabList(player)?.removeTabList()
     }
 
+    /**
+     * Get TabList
+     */
     fun getTabList(player: Player?): PlayerTabList? {
         val var2: Iterator<*> = tabLists.iterator()
-        var tablist: PlayerTabList
+        var tabList: PlayerTabList
         do {
             if (!var2.hasNext()) {
                 return null
             }
             val o = var2.next()!!
-            tablist = o as PlayerTabList
-        } while (!tablist.getPlayer()?.equals(player)!!)
-        return tablist
+            tabList = o as PlayerTabList
+        } while (!tabList.getPlayer()?.equals(player)!!)
+        return tabList
     }
 
     fun setBuilder(builder: TabListBuilder) {

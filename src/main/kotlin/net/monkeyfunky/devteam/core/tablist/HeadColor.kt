@@ -2,7 +2,9 @@ package net.monkeyfunky.devteam.core.tablist
 
 import com.mojang.authlib.properties.Property
 
-
+/**
+ * @author noob_pro_ex, eight_y_88
+ */
 class HeadColor {
     companion object {
         val BLACK = Property(
