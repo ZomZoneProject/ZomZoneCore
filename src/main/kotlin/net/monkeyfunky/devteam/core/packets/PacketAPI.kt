@@ -16,6 +16,10 @@ class PacketAPI {
             Core.PLUGIN.getPacketAPI().packetHandlers.remove(name)
         }
 
+        fun removeAll() {
+            Core.PLUGIN.getPacketAPI().packetHandlers.clear()
+        }
+
         fun send(player: Player?, packet: Any?) {
             try {
                 val entityPlayer: Any = player?.javaClass!!.getDeclaredMethod("getHandle").invoke(player)
