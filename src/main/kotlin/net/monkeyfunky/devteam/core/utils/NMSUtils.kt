@@ -3,6 +3,9 @@ package net.monkeyfunky.devteam.core.utils
 import org.bukkit.Bukkit
 
 object NMSUtils {
+    /**
+     * Get Server's NMS Version
+     */
     val serverVersion: String
         get() {
             val version: String = try {

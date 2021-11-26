@@ -4,6 +4,9 @@ import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
 object NBTUtils {
+    /**
+     * ItemStack to String
+     */
     fun toString(stack: ItemStack?): String? {
         try {
             val craftItemStackClass = Class.forName("org.bukkit.craftbukkit.$serverVersion.inventory.CraftItemStack")
@@ -21,6 +24,9 @@ object NBTUtils {
         return null
     }
 
+    /**
+     * String to ItemStack
+     */
     @Suppress("DEPRECATION")
     fun fromString(string: String?): ItemStack? {
         try {
