@@ -19,14 +19,34 @@ import java.io.InputStreamReader
 import java.nio.charset.StandardCharsets
 import kotlin.properties.Delegates
 
+/**
+ * ZomZoneCore Plugin
+ *
+ * @author eight_y_88
+ *
+ */
 
 class Core : JavaPlugin() {
     companion object {
+        /**
+         * Plugin instance
+         */
         lateinit var PLUGIN : Core private set
+
+        /**
+         * Debug flag
+         */
         var DEBUG by Delegates.notNull<Boolean>()
     }
 
+    /**
+     * PacketAPI instance
+     */
     private lateinit var packetAPI: PacketAPI
+
+    /**
+     * TabList instance
+     */
     private lateinit var tabList: TabList
 
     override fun onEnable() {
@@ -55,10 +75,13 @@ class Core : JavaPlugin() {
     }
 
     override fun onDisable() {
-        PacketAPI.remove("DEBUG")
+        PacketAPI.removeAll()
         tabList.disable()
     }
 
+    /**
+     * Reload Config
+     */
     override fun reloadConfig() {
         super.reloadConfig()
         loadConfig()
@@ -81,10 +104,16 @@ class Core : JavaPlugin() {
         }
     }
 
+    /**
+     * Returns PacketAPI
+     */
     fun getPacketAPI(): PacketAPI {
         return packetAPI
     }
 
+    /**
+     * Returns TabList
+     */
     fun getTabList(): TabList {
         return tabList
     }
