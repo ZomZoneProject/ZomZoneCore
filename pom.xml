@@ -120,13 +120,6 @@
                         <goals>
                             <goal>jar</goal>
                         </goals>
-                        <configuration>
-                            <attach>true</attach>
-                            <includes>
-                                <include>${project.basedir}/src/main/kotlin/*</include>
-                            </includes>
-                            <forceCreation>true</forceCreation>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
