@@ -8,7 +8,7 @@ import java.util.*
 class TabListManager {
     val profiles = arrayOfNulls<UUID>(80)
     var factory: PacketFactory private set
-    var builder: TabListBuilder private set
+    var builder: ITabListBuilder private set
     private val tabLists: HashSet<PlayerTabList> = hashSetOf()
 
     init {
@@ -57,7 +57,7 @@ class TabListManager {
         return tabList
     }
 
-    fun setBuilder(builder: TabListBuilder) {
+    fun setBuilder(builder: AbstractTabListBuilder) {
         this.builder = builder
     }
 }
