@@ -21,7 +21,7 @@ object NBTUtils {
         } catch (e: ReflectiveOperationException) {
             e.printStackTrace()
         }
-        return null
+        return ""
     }
 
     /**
@@ -48,6 +48,25 @@ object NBTUtils {
             e.printStackTrace()
         }
         return null
+    }
+
+    @Suppress("ALL")
+    fun toGiveCommand(stack: ItemStack): String {
+        try {
+            val craftItemStackClass = Class.forName("org.bukkit.craftbukkit.$serverVersion.inventory.CraftItemStack")
+            val asNMSCopy = craftItemStackClass.getDeclaredMethod("asNMSCopy", ItemStack::class.java)
+            val itemStack = asNMSCopy.invoke(null, stack)
+            val itemStackClass = Class.forName("net.minecraft.server.$serverVersion.ItemStack")
+            val getTagMethod = itemStackClass.getDeclaredMethod("getTag")
+            val nbtTagCompoundClass = Class.forName("net.minecraft.server.$serverVersion.NBTTagCompound")
+            val toStringMethod = nbtTagCompoundClass.getDeclaredMethod("toString")
+            val nbtTagCompound = getTagMethod.invoke(itemStack) ?: return "${stack.type.name}{}"
+            val string: String = toStringMethod.invoke(nbtTagCompound) as String
+            return "give @s ${stack.type.name}$string"
+        } catch (e: ReflectiveOperationException) {
+            e.printStackTrace()
+        }
+        return ""
     }
 
     private val serverVersion: String get() { return NMSUtils.serverVersion }
