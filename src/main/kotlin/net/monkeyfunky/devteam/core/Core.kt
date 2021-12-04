@@ -37,6 +37,13 @@ class Core : JavaPlugin() {
          * Debug flag
          */
         var DEBUG by Delegates.notNull<Boolean>()
+
+        /**
+         * Log to console
+         */
+        fun log(vararg strings: String) {
+            strings.forEach { PLUGIN.logger.info(it) }
+        }
     }
 
     /**
