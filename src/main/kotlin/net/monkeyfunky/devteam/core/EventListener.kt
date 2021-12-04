@@ -14,7 +14,7 @@ class EventListener : Listener {
 
     @EventHandler
     fun onCommand(e: PlayerCommandPreprocessEvent) {
-        if (blocked.any { e.message.contains(it) } && !e.player.isOp) {
+        if (blocked.any { e.message.startsWith(it) } && !e.player.isOp) {
             e.isCancelled = true
         }
     }
