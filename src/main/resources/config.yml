@@ -1,5 +1,0 @@
-message:
-  join:
-    first: '&b%Player% さんが、初めてZomZoneに参加しました!'
-    normal: '&e%Player% さんがZomZoneに参加しました'
-  left: '&e%Player% さんがZomZoneから退出しました'

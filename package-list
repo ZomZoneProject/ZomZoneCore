@@ -1,0 +1,18 @@
+$dokka.format:javadoc-v1
+$dokka.linkExtension:html
+$dokka.location:net.monkeyfunky.devteam.core.events/LogInOutListener.Companion///PointingToDeclaration/net/monkeyfunky/devteam/core/events/LogInOutListener.Companion.html
+$dokka.location:net.monkeyfunky.devteam.core.packets/PacketAPI.PIPELINE///PointingToDeclaration/net/monkeyfunky/devteam/core/packets/PacketAPI.PIPELINE.html
+$dokka.location:net.monkeyfunky.devteam.core.tablist.data/TabListEntry.Companion///PointingToDeclaration/net/monkeyfunky/devteam/core/tablist/data/TabListEntry.Companion.html
+$dokka.location:net.monkeyfunky.devteam.core.tablist/HeadColor.Companion///PointingToDeclaration/net/monkeyfunky/devteam/core/tablist/HeadColor.Companion.html
+$dokka.location:net.monkeyfunky.devteam.core.tablist/TabList.Companion///PointingToDeclaration/net/monkeyfunky/devteam/core/tablist/TabList.Companion.html
+$dokka.location:net.monkeyfunky.devteam.core/Core.Companion///PointingToDeclaration/net/monkeyfunky/devteam/core/Core.Companion.html
+net.monkeyfunky.devteam.core
+net.monkeyfunky.devteam.core.commands
+net.monkeyfunky.devteam.core.debug
+net.monkeyfunky.devteam.core.events
+net.monkeyfunky.devteam.core.packets
+net.monkeyfunky.devteam.core.tablist
+net.monkeyfunky.devteam.core.tablist.data
+net.monkeyfunky.devteam.core.tablist.packets
+net.monkeyfunky.devteam.core.utils
+
