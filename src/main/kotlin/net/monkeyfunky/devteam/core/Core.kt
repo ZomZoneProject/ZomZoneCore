@@ -2,6 +2,7 @@ package net.monkeyfunky.devteam.core
 
 import net.monkeyfunky.devteam.core.commands.DebugCommand
 import net.monkeyfunky.devteam.core.commands.ReloadConfigCommand
+import net.monkeyfunky.devteam.core.commands.ToGiveCommand
 import net.monkeyfunky.devteam.core.debug.DebugPacketListener
 import net.monkeyfunky.devteam.core.events.LogInOutListener
 import net.monkeyfunky.devteam.core.events.PacketListener
@@ -70,6 +71,7 @@ class Core : JavaPlugin() {
 
         getCommand("reloadcore")?.setExecutor(ReloadConfigCommand())
         getCommand("debugcore")?.setExecutor(DebugCommand())
+        getCommand("togive")?.setExecutor(ToGiveCommand())
 
         packetAPI = PacketAPI()
 
